@@ -1,7 +1,7 @@
 "use strict";
 //Init an empty array element called task
 let tasks = [];
-//Add an ON CLICK event listenenr to the "add atask button" that calls a function
+//Add an ON CLICK event listenenr to the "add a task button" that calls a function
 document.getElementById("addTaskBtn").addEventListener("click", function () {
   // Get value of the input box and store it in an variable called taskInput
   let taskInput = document.getElementById("taskInput").value;
@@ -46,3 +46,18 @@ function displayTasks() {
     taskList.appendChild(li);
   });
 }
+//Function to remove task from list when checkmark is clicked
+function removeTask(index) {
+  //Remove task from array
+  tasks.splice(index, 1);
+  // Call displayTasks function to update task list display
+  displayTasks();
+}
+
+// Event listener for "Clear all tasks" Button
+document.getElementById("clearTaskBtn").addEventListener("click", function () {
+  // Empty tasks array to remove all tasks
+  tasks = [];
+  // Call function to update task list display
+  displayTasks();
+});

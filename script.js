@@ -61,3 +61,54 @@ document.getElementById("clearTaskBtn").addEventListener("click", function () {
   // Call function to update task list display
   displayTasks();
 });
+
+document.getElementById("addTaskBtn").addEventListener("click", addTask);
+
+// Add keydown event listener to the input field
+document
+  .getElementById("taskInput")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission if in a form
+      addTask();
+    }
+  });
+
+function addTask() {
+  const input = document.getElementById("taskInput");
+  const button = document.getElementById("addTaskBtn");
+  const messageDiv = document.getElementById("message");
+  const taskList = document.getElementById("taskList");
+
+  const taskValue = input.value.trim();
+
+  if (taskValue === "") {
+    messageDiv.innerHTML = "Please enter a task.";
+    return; // Exit if the input is empty
+  }
+
+  // Add the task to the array
+  tasks.push(taskValue);
+
+  // Update the button text
+  button.innerHTML = "Task Added!";
+  messageDiv.innerHTML = ""; // Clear any previous messages
+
+  // Clear the input field
+  input.value = "";
+
+  // Display the tasks in the list
+  displayTasks();
+}
+
+function displayTasks() {
+  const taskList = document.getElementById("taskList");
+  taskList.innerHTML = ""; // Clear the current list
+
+  // Loop through the tasks array and create list items
+  tasks.forEach((task) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = task;
+    taskList.appendChild(listItem);
+  });
+}

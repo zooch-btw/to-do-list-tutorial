@@ -40,11 +40,13 @@ function displayTasks() {
       "align-items-center"
     );
 
-    li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'> √ </button>`;
+    li.innerHTML = `${task} <button class='btn btn-secondary btn-sm' onclick='removeTask(${index})'> √ </button>`;
 
     //Append new task to task list
     taskList.appendChild(li);
   });
+
+  updateTaskCounter();
 }
 //Function to remove task from list when checkmark is clicked
 function removeTask(index) {
@@ -76,6 +78,21 @@ function addTask() {
   const button = document.getElementById("addTaskBtn");
   const originalText = "Add Task";
 
+  const taskText = taskInput.value.trim();
+
+  if (taskText === "") return; // Prevent empty tasks
+
+  const taskItem = document.createElement("li");
+  taskItem.textContent = taskText;
+  taskItem.addEventListener("click", function () {
+    this.classList.toggle("completed"); // Toggle the completed class on click
+  });
+
+  document.getElementById("taskList").appendChild(taskItem);
+  taskInput.value = ""; // Clear input field
+}
+
+
   button.innerHTML = "Task Added!";
 
   // Reset button text after 2 seconds
@@ -83,3 +100,28 @@ function addTask() {
     button.innerHTML = originalText;
   }, 2000);
 }
+
+// Feature #1: Allow user to use the enter key
+document
+  .getElementById("taskInput")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      document.getElementById("addTaskBtn").click();
+    }
+  });
+
+// This will be called whenever the user adds a new task
+function updateTaskCounter() {
+  document.getElementById(
+    "taskCounter"
+  ).innerText = `Total Tasks: ${tasks.length}`;
+}
+
+//Event listener for the "Clear All Tasks" button
+document.getElementById("clearTaskBtn").addEventListener("click", function () {
+  tasks = [];
+  //call function to update the task list display
+  displayTasks();
+  // Ensure the counter updates when clearing tasks
+  updateTaskCounter();
+});

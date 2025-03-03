@@ -57,6 +57,20 @@ function removeTask(index) {
   tasks.splice(index, 1);
   // Call displayTasks function to update task list display
   displayTasks();
+
+  const button2 = document.getElementById("addTaskBtn");
+  const originalText2 = "Add Task";
+
+  button2.innerHTML = "Task Deleted!";
+
+  setTimeout(
+    () => {
+      button2.innerHTML = originalText2;
+    },
+    1000,
+    button2,
+    originalText2
+  );
 }
 // Event listener for "Clear all tasks" Button
 document.getElementById("clearTaskBtn").addEventListener("click", function () {
@@ -66,6 +80,20 @@ document.getElementById("clearTaskBtn").addEventListener("click", function () {
   displayTasks();
 
   updateTaskCounter();
+
+  const button3 = document.getElementById("addTaskBtn");
+  const originalText3 = "Add Task";
+
+  button3.innerHTML = "Task Deleted!";
+
+  setTimeout(
+    () => {
+      button3.innerHTML = originalText3;
+    },
+    1000,
+    button3,
+    originalText3
+  );
 });
 
 // feature 2
@@ -111,7 +139,7 @@ function addTask() {
     () => {
       button.innerHTML = originalText;
     },
-    2000,
+    1000,
     button,
     originalText
   );

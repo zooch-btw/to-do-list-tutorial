@@ -1,4 +1,5 @@
 "use strict";
+let taskcnt = 0;
 //Init an empty array element called task
 let tasks = [];
 //Add an ON CLICK event listenenr to the "add a task button" that calls a function
@@ -53,7 +54,6 @@ function removeTask(index) {
   // Call displayTasks function to update task list display
   displayTasks();
 }
-
 // Event listener for "Clear all tasks" Button
 document.getElementById("clearTaskBtn").addEventListener("click", function () {
   // Empty tasks array to remove all tasks
@@ -61,3 +61,25 @@ document.getElementById("clearTaskBtn").addEventListener("click", function () {
   // Call function to update task list display
   displayTasks();
 });
+
+taskInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    console.log("HI!");
+    // Get value of the input box and store it in an variable called taskInput
+    let taskInput = document.getElementById("taskInput").value;
+
+    //Check if TaskInput has something in it
+    if (taskInput) {
+      //Add new tasks to task array
+      tasks.push(taskInput);
+
+      //Clear input field after adding task
+      document.getElementById("taskInput").value = "";
+
+      //Call new function to updaye task list display
+      displayTasks();
+    }
+  }
+  // do something
+});
+document.getElementById("TskCnt").innerHTML;

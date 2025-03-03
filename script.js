@@ -17,6 +17,8 @@ document.getElementById("addTaskBtn").addEventListener("click", function () {
 
     //Call new function to updaye task list display
     displayTasks();
+
+    addTask();
   }
 });
 
@@ -62,11 +64,20 @@ document.getElementById("clearTaskBtn").addEventListener("click", function () {
   tasks = [];
   // Call function to update task list display
   displayTasks();
+
+  updateTaskCounter();
 });
 
-taskInput.addEventListener("keydown", (event) => {
+// feature 2
+function updateTaskCounter() {
+  document.getElementById(
+    "taskCounter"
+  ).innerText = `Total Tasks: ${tasks.length}`;
+}
+//feature 1
+window.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
-    console.log("HI!");
+    addTask();
     // Get value of the input box and store it in an variable called taskInput
     let taskInput = document.getElementById("taskInput").value;
 
@@ -82,6 +93,26 @@ taskInput.addEventListener("keydown", (event) => {
       displayTasks();
     }
   }
-  // do something
 });
-document.getElementById("TskCnt").innerHTML;
+
+//Every btime this function is called it will change the enter button to say "Task Added!" and it wiull reset to "Add Task" after 2 seconds
+function addTask() {
+  const button = document.getElementById("addTaskBtn");
+  const originalText = "Add Task";
+
+  button.innerHTML = "Task Added!";
+
+  updateTaskCounter();
+
+  displayTasks();
+
+  // Reset button text after 2 seconds
+  setTimeout(
+    () => {
+      button.innerHTML = originalText;
+    },
+    2000,
+    button,
+    originalText
+  );
+}

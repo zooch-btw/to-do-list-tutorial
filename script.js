@@ -41,11 +41,13 @@ function displayTasks() {
       "align-items-center"
     );
 
-    li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'> √ </button>`;
+    li.innerHTML = `${task} <button class='btn btn-secondary btn-sm' onclick='removeTask(${index})'> √ </button>`;
 
     //Append new task to task list
     taskList.appendChild(li);
   });
+
+  updateTaskCounter();
 }
 //Function to remove task from list when checkmark is clicked
 function removeTask(index) {

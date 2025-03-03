@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body style="background-color: turquoise;">
     <header>
         <!-- place navbar here -->
     </header>
@@ -22,19 +22,19 @@
         <div class="row justify-content-center">
             <div id="TskCnt"> </div>
             <div class="col-md-8 col-lg-6">
-                <div class="h1 text-center mb-4">
-                    To-Do List
+                <div class="h1 text-center mb-4"><u><i>To-Do List</i></u>
                 </div>
+                <h1 id="taskCounter" class="text-center"> Total Tasks:0</h1>
                 <div class="row g-2">
                     <div class="col-8">
                         <input type="text" id="taskInput" class="form-control" placeholder="Enter task">
                     </div>
                     <div class="col-4">
-                        <button id="addTaskBtn" class="btn btn-danger w-100">Enter</button>
+                        <button id="addTaskBtn" class="btn btn-warning w-100">Enter</button>
                     </div>
                 </div>
                 <ul id="taskList" class="list-group mt-3"></ul>
-                <button id="clearTaskBtn" class="btn btn-primary mt-3 w-100">Clear All Tasks</button>
+                <button id="clearTaskBtn" class="btn btn-dark mt-3 w-100">Clear All Tasks</button>
             </div>
         </div>
 

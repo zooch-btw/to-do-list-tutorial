@@ -81,6 +81,7 @@ document.getElementById("clearTaskBtn").addEventListener("click", function () {
 
   updateTaskCounter();
 
+  // When checkmark is clicked say "Task deleted!"
   const button3 = document.getElementById("addTaskBtn");
   const originalText3 = "Add Task";
 
@@ -123,8 +124,8 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-//Every btime this function is called it will change the enter button to say "Task Added!" and it wiull reset to "Add Task" after 2 seconds
-function addTask() {
+  // When checkmark is clicked say "Task Added!"
+  function addTask() {
   const button = document.getElementById("addTaskBtn");
   const originalText = "Add Task";
 
@@ -134,7 +135,7 @@ function addTask() {
 
   displayTasks();
 
-  // Reset button text after 2 seconds
+  // Reset button text after 1 second
   setTimeout(
     () => {
       button.innerHTML = originalText;

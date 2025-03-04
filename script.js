@@ -81,11 +81,11 @@ document.getElementById("clearTaskBtn").addEventListener("click", function () {
 
   updateTaskCounter();
 
-  // When checkmark is clicked say "Task deleted!"
+  // when long button is clicked say all tasks deleted and clear all tasks
   const button3 = document.getElementById("addTaskBtn");
   const originalText3 = "Add Task";
 
-  button3.innerHTML = "Task Deleted!";
+  button3.innerHTML = "All Tasks Deleted!";
 
   setTimeout(
     () => {
@@ -124,8 +124,8 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-  // When checkmark is clicked say "Task Added!"
-  function addTask() {
+// When checkmark is clicked say "Task Added!"
+function addTask() {
   const button = document.getElementById("addTaskBtn");
   const originalText = "Add Task";
 
